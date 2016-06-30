@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopIT</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container">
+
+	<div class="page-header">data-binding - ex1 ( knockout.js )</div>
+
+
+	<div class="well">
+		Name:<input data-bind="value:name">
+		<button class="btn btn-primary" data-bind="click:resetName">Reset</button>
+	</div>
+
+	Hello :
+	<span data-bind="text:name" class="badge"></span>
+
+	<hr />
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/knockout/dist/knockout.js"></script>
+
+	<script type="text/javascript">
+		var vm = {
+			name : ko.observable('Nag'),
+			resetName:function(){
+				this.name('Nag');
+			}
+		};
+
+		ko.applyBindings(vm);
+	</script>
+
+
+</body>
+</html>

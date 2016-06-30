@@ -47,12 +47,54 @@ what JS-lang can do on HTML-page in browser?
 	 
 	 
 	 
+	 =================================================
 	 
 	 
-	 --> plain-JS
-	 --> jQuery
+	 fron-end appln ==> HTML + CSS + JS + Web APIs
 	 
-	 --> Angular
+	 
+	 problems/complexity of plain-JS:
+	 
+	 --> browser compatibility
+	 --> too-much code for simple oprns.
+	 --> shud care performance on DOM-manipulation
+	 --> shud memory-leak problems.
+	 
+	 --> very difficult to organize code
+	 
+	 --------------
+	 
+	 soln : using JS libraries and Frameworks
+	 
+	 JS library
+	 -----------
+	 
+	   -> jQuery
+	 
+	 -----------------------------------
+	 
+	 
+	 
+	 Limitations of jQuery
+	 ---------------------
+	 
+	 --> low-level to DOM
+	 --> no automatic data-binding  ( imp )
+	 --> No solns for clear code organization
+	 
+	 soln:
+	 
+	 -> JS F.Ws.....
+	 
+	 ----------------------------------
+	 
+	 
+	  Angular F.W
+	    1.x
+	    
+	    
+	 
+	 
 	 
 	 
 	 

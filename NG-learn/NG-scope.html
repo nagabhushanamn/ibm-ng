@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopIT</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 10px;
+	margin: 5px;
+}
+</style>
+</head>
+<body class="container">
+
+	<div class="page-header">Angular scope(s)</div>
+
+	<div ng-app="demo">
+	
+		<span class="badge">{{message}}</span>
+		<hr/>
+		
+		<span class="badge">{{color}}</span>
+		<button class="btn btn-sm btn-primary" ng-click="changeColor()">change-color</button>
+
+		<div ng-controller="ColorController as cc">
+			<span class="badge">{{color}}</span>
+			<button class="btn btn-sm btn-primary" ng-click="changeColor()">change-color</button>
+		</div>
+		
+		<div ng-controller="ColorController as cc">
+			<span class="badge">{{color}}</span>
+			<button class="btn btn-sm btn-primary" ng-click="changeColor()">change-color</button>
+			
+			<div ng-controller="PaintController">
+				{{color}}
+				<hr/>
+				{{message}}
+			</div>
+		
+		</div>
+
+	</div>
+
+
+	<hr />
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+		mod.run(function($rootScope) {
+			$rootScope.color = 'Red';
+			$rootScope.changeColor=function(){
+				console.log('changing $rootScope.color');
+				$rootScope.color='New Red';
+			}
+			
+			
+			$rootScope.$on('color-change',function(e,data){
+				$rootScope.message=" color changed to "+data.color;
+			});
+			
+		});
+		
+		mod.controller('ColorController', function($scope,$rootScope) {
+			console.log('ColorController instance created..');
+			$scope.color='Green';
+			$scope.changeColor=function(){
+				console.log('changing $scope.color');
+				$scope.color='New Green';
+				//$rootScope.color='New Red';
+				//$scope.$parent.color='New Red';
+				
+				//$scope.$emit('color-change',{color:$scope.color});
+				$scope.$broadcast('color-change',{color:$scope.color});
+				
+			}
+		});
+		
+		mod.controller('PaintController', function($scope) {
+			$scope.$on('color-change',function(e,data){
+				$scope.message="painting with "+data.color;
+			});
+		});
+		
+	</script>
+
+
+</body>
+</html>

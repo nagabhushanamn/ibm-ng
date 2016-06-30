@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopIT</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container">
+
+	<div class="page-header">data-binding - ex1  ( plain-js )</div>
+
+
+	<div class="well">
+		Name:<input id="nameInpField">
+		     <button class="btn btn-primary" id="resetBtn">Reset</button>
+	</div>
+	
+	Hello : <span id="nameSpan" class="badge"></span>
+	
+	<hr/>
+	
+	<script type="text/javascript">
+		
+		var vm={
+				name:'Nag',
+				age:32
+		};
+	
+		var nameInpField=document.getElementById('nameInpField');
+		var nameSpan=document.getElementById('nameSpan');
+		var resetBtn=document.getElementById('resetBtn');
+		
+		nameInpField.addEventListener('keyup',function(){
+			vm.name=this.value;
+			applyBindings();
+		});
+		resetBtn.addEventListener('click',function(){
+			vm.name='Nag';
+			applyBindings();
+		});
+		
+		function applyBindings(){
+			nameInpField.value=vm.name;
+			nameSpan.innerHTML=vm.name;
+		}
+		
+		applyBindings();
+		
+	</script>
+
+
+</body>
+</html>

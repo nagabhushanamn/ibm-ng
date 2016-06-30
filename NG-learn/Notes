@@ -1,0 +1,54 @@
+
+
+
+ How angular doing 2-way data-binding ?
+ 
+ 
+ 
+   in compilation-phase, 
+   
+   	on every directive/expression,angular will register 'watcher(s)'
+   
+  	watcher(s) --> will do data-binding when ViewModel get change.
+ 
+    when 'watcher(s)' will get execute?
+    
+     --> when view-model is dirty , 'digest-loop' will execute all watcher(s). 
+     
+    -----------------------------------------
+    
+    imp-note : we can also custom-watchers , to execute any logic 
+    
+    --------------------------------------------
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

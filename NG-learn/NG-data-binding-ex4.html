@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopIT</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" data-ng-app="demo">
+
+	<div class="page-header">data-binding - ex4 ( angularjs )</div>
+	
+	<hr/>
+	
+	{{message}}
+	
+	<hr/>
+
+	<div data-ng-controller="UserController">
+	
+			
+		<div class="well">
+			Name:<input ng-model="name">
+			<button class="btn btn-primary" data-ng-click="resetName()">Reset</button>
+		</div>
+	
+		Hello :
+		<span class="badge">{{name}}</span>
+		
+		<hr/>
+		
+		<button class="btn btn-primary" ng-click="getName()">get-name ( ng )</button>
+		<button class="btn btn-primary" id="nameBtn">get-name ( jquery )</button>
+		
+	</div>
+
+	<hr />
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod=angular.module('demo', []);
+		mod.controller('UserController', function($scope,$rootScope) {
+			$scope.name='Nag';
+			$scope.resetName=function(){
+				$scope.name='Nag';
+			}
+			
+			//---------------------------
+			
+			$scope.$watch('name',function(newName,oldName){
+				console.log('$watcher running  '+newName+" - "+oldName);
+			});
+			
+			//--------------------------
+			
+			$scope.getName=function(){
+				$scope.name='Nagabhushanam';
+			};
+			
+		
+			$(function(){
+				$('#nameBtn').click(function(){
+					console.log('getting name..');
+					$scope.name='Nagabhushanam';
+					$rootScope.message="Name changed";
+					//$scope.$apply();
+					$scope.$digest();
+				});
+			});	
+			
+			
+		});
+	</script>
+
+
+</body>
+</html>
