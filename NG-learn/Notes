@@ -22,12 +22,26 @@
     --------------------------------------------
     
     
+    NG - validation
+    ---------------
+    
+    3-ways
+    
+    --> using HTML-5 input constraints
+    --> using directives
+    --> using third-party validation modules
     
     
     
+    ----------------------------------------
     
     
     
+    NG - services
+    ----------------
+    
+    
+    provider --> factory-method --> service-instance
     
     
     

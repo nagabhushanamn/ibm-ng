@@ -1,0 +1,19 @@
+
+
+
+ Testing
+ --------
+ 
+   Unit-Testing
+   
+    we need Testing F.Ws
+    
+    -> jasmine
+    -> mocha with chai and sinon
+    
+    -> Qunit
+    -> nodeunit
+    
+    ..........
+    
+    ---------------------

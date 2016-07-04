@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopIT</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+
+</head>
+<body class="container" data-ng-app="demo">
+
+	<div class="page-header">NG task</div>
+
+	<table ng-controller="DemoController">
+		<tr>
+			<td ng-repeat="item in items">
+				{{item.initial}}-
+				<input ng-model="item.max" 
+				       ng-blur="onBlur(item.max)" 
+				       />
+			</td>
+		</tr>
+	</table>
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+		
+		function Item(initial,max){
+			this.initial=initial;
+			this.max=max;
+		}
+		
+		mod.controller('DemoController', function($scope) {
+			$scope.items=[];
+			$scope.items.push(new Item(0,null));
+			$scope.onBlur=function(max){
+				var item=new Item(max, null)
+				$scope.items.push(item);
+			}
+		});
+		
+		mod.directive('myFocus', function(){
+			return{
+				link:function(scope,ele,attr){
+					if(attr.myFocus){
+						ele.focus();
+					}
+				}
+			};
+		});
+		
+				
+	</script>
+
+
+</body>
+</html>

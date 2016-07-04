@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopIT</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+	
+</head>
+<body class="container" data-ng-app="demo">
+
+	<div class="page-header">NG - directive - scope</div>
+
+	<div ng-controller="ColorController">
+		<input ng-model="color">
+		<hr/>
+		<hello-world my-color="color"></hello-world>
+		<hr/>
+		<hello-world></hello-world>
+	</div>
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+
+		mod.controller('ColorController', function($scope) {
+			$scope.color='yellow';
+		});
+		
+		mod.directive('helloWorld', function() {
+			return {
+				restrict: "AECM",
+				//replace: true,
+				scope: {
+					color:'=myColor'
+				},
+				//template : "<h4>NG-world</h4>"
+				templateUrl: "hello-world.html",
+				link:function(scope,ele,attr){
+					
+					//console.log(scope.color);
+					//scope.color='grey';
+					
+					ele.on('mouseover',function(e){
+						ele.css('cursor','pointer');
+					});
+					ele.on('click',function(e){
+						//ele.css('background-color','#fff');
+						console.log('changing bg color');
+						scope.color='#def';
+						scope.$apply();
+					});
+					
+					
+				}
+			};
+		});
+	</script>
+
+
+</body>
+</html>

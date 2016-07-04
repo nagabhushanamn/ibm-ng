@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopIT</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+div {
+	margin: 5px;
+	padding: 10px;
+}
+</style>
+</head>
+<body class="container" data-ng-app="demo">
+
+	<div class="page-header">NG - directive - basics</div>
+
+	<div dir1>
+	</div>
+	
+	
+	
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+
+		mod.directive('dir1', function() {
+			return {
+				//transclude: true,
+				template: "<div> <div dir2></div> </div>",
+				compile : function(ele, attr) {
+					console.log('dir1: compile..');
+					ele.css({
+						'border' : '1px solid red'
+					});
+					//ele.html('<span class=badge>dir1</span>');
+					return {
+						pre : function(scope) {
+							console.log('dir1: preLink');
+							scope.name='Nag';
+						},
+						post : function(scope) {
+							console.log('dir1: postLink');
+							//scope.name='Nag';
+						}
+					};
+
+				},
+				controller : function($scope) {
+					console.log('dir1: controller');
+				}
+			};
+		});
+		
+		mod.directive('dir2', function() {
+			return {
+				template:'<div>{{message}}</div>',
+				compile : function(ele, attr) {
+					console.log('dir2: compile..');
+					ele.css({
+						'border' : '1px solid green'
+					});
+					//ele.html('<span class=badge>dir2</span>');
+
+					return {
+						pre : function() {
+							console.log('dir2: preLink');
+						},
+						post : function(scope) {
+							console.log('dir2: postLink');
+							scope.message='im '+scope.name;
+						}
+					};
+
+				},
+				controller : function($scope) {
+					console.log('dir2: controller');
+				}
+
+			};
+		});
+		
+	</script>
+
+
+</body>
+</html>

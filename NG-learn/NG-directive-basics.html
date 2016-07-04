@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopIT</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" data-ng-app="demo">
+
+	<div class="page-header">NG - directive - basics</div>
+
+
+	<div ibm-hello-world></div>
+	<div ibm:hello:world></div>
+	
+	<hr/>
+	
+	<ibm-hello-world></ibm-hello-world>
+	
+	<hr/>
+	
+	<div class="ibm-hello-world"></div>
+
+	<hr />
+	
+	<!-- directive:ibm-hello-world -->
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+
+		mod.directive('ibmHelloWorld', function() {
+			return {
+				restrict: "AECM",
+				replace: true,
+				template : "<h4>NG-world</h4>"
+			};
+		});
+	</script>
+
+
+</body>
+</html>

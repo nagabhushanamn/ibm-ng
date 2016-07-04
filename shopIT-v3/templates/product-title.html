@@ -1,0 +1,5 @@
+<div>
+	<h4>{{product.name|uppercase}} <small>{{product.mfg|date:'yyyy'}}</small> </h4>
+	<h5>{{product.price|priceDiscount:product.discount|currency:'&#8377;':2}}</h5>
+	<button class="btn btn-primary" ng-show="product.canBuy">Buy</button>			
+</div>

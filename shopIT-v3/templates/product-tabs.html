@@ -1,0 +1,29 @@
+<section>
+	<ul class="nav nav-tabs">
+		<li ng-repeat="tabText in tabs" 
+		    ng-class="{active:isTabSelected($index+1),someClass:false}">
+		    <a href ng-click="changeTab($index+1)">{{tabText}}</a>
+		</li>
+	</ul>
+	<div class="panel" ng-show="isTabSelected(1)">
+		<div class="">
+			{{product.description}}
+		</div>
+	</div>
+	<div class="panel" ng-show="isTabSelected(2)">
+		<div class="panel-body">
+			Not Yet
+		</div>
+	</div>
+	<div class="panel" ng-show="isTabSelected(3)">
+		<div class="panel-body">
+			
+			<blockquote ng-repeat="review in product.reviews">
+				<h5>{{review.stars}} <small>{{review.author}}</small> </h5>
+				<p>{{review.comment}}</p>
+			</blockquote>
+			<hr/>
+			<product-review-form></product-review-form>
+		</div>
+	</div>
+</section>

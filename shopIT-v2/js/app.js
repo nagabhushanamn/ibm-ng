@@ -10,20 +10,30 @@
 
 	// Model
 	var items = [ {
+		id:1,
 		name : 'Laptop',
 		price : 198000,
 		description : 'New Model',
 		canBuy : true,
 		notAvailable : false,
 		mfg : Date.now(),
-		discount : 10000
+		discount : 10000,
+		reviews:[
+		         {stars:5,author:'nag@gmail.com',comment:'Good one'},
+		         {stars:3,author:'indu@gmail.com',comment:'too costly'}
+		         ]
 	}, {
+		id:2,
 		name : 'Mobile',
 		price : 18000,
 		description : 'New Model',
 		canBuy : true,
 		notAvailable : false,
-		mfg : Date.now()
+		mfg : Date.now(),
+		reviews:[
+		         {stars:5,author:'nag@gmail.com',comment:'Good one'},
+		         {stars:3,author:'indu@gmail.com',comment:'too costly'}
+		         ]
 	} ];
 
 	// ----------------------------------
@@ -46,6 +56,14 @@
 		};
 		$scope.isTabSelected=function(tabIndex){
 		return $scope.tab===tabIndex;	
+		};
+	});
+	mod.controller('ReviewFormController', function($scope) {
+		$scope.newReview={author:'nag@gmail.com'};
+		$scope.addNewReview=function(product){
+			// send to server with product-id ref
+			product.reviews.push($scope.newReview);
+			$scope.newReview={author:'nag@gmail.com'};
 		};
 	});
 
